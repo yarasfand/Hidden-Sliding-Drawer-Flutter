@@ -6,18 +6,15 @@ class DrawerItems {
   static const home = DrawerItem(title: 'Home', icon: FontAwesomeIcons.house);
   static const profile =
       DrawerItem(title: 'Profile', icon: FontAwesomeIcons.user);
-  static const attendance =
-      DrawerItem(title: 'Attendance', icon: FontAwesomeIcons.calendar);
-  static const reports =
-      DrawerItem(title: 'Reports', icon: FontAwesomeIcons.locationArrow);
+  static const settings =
+      DrawerItem(title: 'Settings', icon: FontAwesomeIcons.gear);
   static const logout =
       DrawerItem(title: 'Log Out', icon: FontAwesomeIcons.signOut);
 
   static final List<DrawerItem> all = [
     home,
     profile,
-    attendance,
-    reports,
+    settings,
     logout,
   ];
 }

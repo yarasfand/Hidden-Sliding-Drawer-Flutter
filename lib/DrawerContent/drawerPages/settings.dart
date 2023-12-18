@@ -15,7 +15,7 @@ class Settings extends StatelessWidget {
           color: Colors.white,
           onPressed: openDrawer,
         ),
-        backgroundColor: const Color(0xFFE26142),
+        backgroundColor:Colors.deepPurple,
         elevation: 0,
         title: const Center(
           child: Padding(

@@ -15,7 +15,7 @@ class ProfilePage extends StatelessWidget {
           color: Colors.white,
           onPressed: openDrawer,
         ),
-        backgroundColor: const Color(0xFFE26142),
+        backgroundColor: Colors.transparent,
         elevation: 0,
         title: const Center(
           child: Padding(

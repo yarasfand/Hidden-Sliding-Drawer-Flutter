@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:cool_alert/cool_alert.dart';
 import 'package:hiddendrawer/DrawerContent/drawerPages/homepage.dart';
 import 'package:hiddendrawer/DrawerContent/drawerPages/profilePage.dart';
 import 'package:hiddendrawer/DrawerContent/drawerPages/settings.dart';
@@ -50,7 +49,7 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        backgroundColor: const Color(0x80E26142),
+        backgroundColor: Colors.deepPurple,
         body: Stack(
           children: [
             buildDrawer(),
@@ -77,7 +76,7 @@ class _MainPageState extends State<MainPage> {
                     dashBloc.add(NavigateToHomeEvent());
                     break;
 
-                  case DrawerItems.attendance:
+                  case DrawerItems.settings:
                     dashBloc.add(NavigateToSettingsEvent());
                     break;
 
@@ -135,7 +134,7 @@ class _MainPageState extends State<MainPage> {
               child: Container(
                 color: isDrawerOpen
                     ? Colors.white12.withOpacity(0.23)
-                    : const Color(0xFFFDF7F5),
+                    : Colors.deepPurple,
                 child: getDrawerPage(),
               ),
             ),
@@ -156,22 +155,6 @@ class _MainPageState extends State<MainPage> {
         } else if (state is NavigateToHomeState) {
           return HomePage(openDrawer: openDrawer);
         } else if (state is NavigateToLogoutState) {
-          Future.delayed(Duration.zero, () {
-            CoolAlert.show(
-              context: context,
-              type: CoolAlertType.confirm,
-              title: 'Confirm Logout',
-              text: 'Are you sure?',
-              confirmBtnText: 'Logout',
-              cancelBtnText: 'Cancel',
-              onConfirmBtnTap: () {
-                Navigator.of(context).pop();
-              },
-              onCancelBtnTap: () {
-                Navigator.of(context).pop();
-              },
-            );
-          });
           return HomePage(openDrawer: openDrawer);
         } else {
           return HomePage(openDrawer: openDrawer);
@@ -180,3 +163,15 @@ class _MainPageState extends State<MainPage> {
     );
   }
 }
+
+class DrawerState {
+  bool isDrawerOpen = true;
+  static final DrawerState _instance = DrawerState._internal();
+
+  factory DrawerState() {
+    return _instance;
+  }
+
+  DrawerState._internal();
+}
+

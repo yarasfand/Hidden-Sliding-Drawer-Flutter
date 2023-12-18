@@ -38,10 +38,24 @@ class MyDrawer extends StatelessWidget {
                   Image.asset("assets/images/profile.png", height: 90,),
                   SizedBox(width: 10.0),
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(10, 25, 0, 0),
-                    child: Text(
-                      'John', // Replace with the actual name
-                      style: TextStyle(fontSize: 20.0),
+                    padding: const EdgeInsets.fromLTRB(0, 22, 0, 0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Asfand',
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white, // Set the text color to white
+                          ),
+                        ),
+                        SizedBox(height: 4.0),
+                        Text(
+                          'Developer',
+                          style: TextStyle(fontSize: 16.0, color: Colors.grey),
+                        ),
+                        ],
                     ),
                   ),
                 ],
@@ -57,17 +71,20 @@ class MyDrawer extends StatelessWidget {
     ),
   );
 
-  Widget buildDrawerItems(BuildContext context) => Column(
-    children: DrawerItems.all.
-    map((item) => ListTile(
-      contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-      leading: Icon(item.icon, color: Colors.white70),
-      title: (Text(
-        item.title,
-        style: const TextStyle(color: Colors.white70,fontSize: 18, fontWeight: FontWeight.bold,),
-      )),
-      onTap: () => onSelectedItems(item),
+  Widget buildDrawerItems(BuildContext context) => Padding(
+    padding: const EdgeInsets.fromLTRB(0, 22, 0, 0),
+    child: Column(
+      children: DrawerItems.all.
+      map((item) => ListTile(
+        contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+        leading: Icon(item.icon, color: Colors.white),
+        title: (Text(
+          item.title,
+          style: const TextStyle(color: Colors.white60,fontSize: 18, fontWeight: FontWeight.bold,),
+        )),
+        onTap: () => onSelectedItems(item),
+      ),
+      ).toList(),
     ),
-    ).toList(),
   );
 }
