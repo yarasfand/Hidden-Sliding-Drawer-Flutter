@@ -1,1 +1,0 @@
-bool isDrawerOpen = false;
