@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hiddendrawer/DrawerContent/drawerPages/homepage.dart';
 import 'package:hiddendrawer/DrawerContent/drawerPages/profilePage.dart';
 import 'package:hiddendrawer/DrawerContent/drawerPages/settings.dart';
+import 'package:hiddendrawer/globalVariable/globalVars.dart';
 import '../drawer_bloc/drawerk_bloc.dart';
 import 'drawer.dart';
 import 'draweritems.dart';
