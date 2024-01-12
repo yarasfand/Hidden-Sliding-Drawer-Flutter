@@ -1,5 +1,4 @@
 import 'package:flutter/Material.dart';
-
 import 'draweritems.dart';
 
 class DrawerItem {
@@ -18,15 +17,15 @@ class MyDrawer extends StatelessWidget {
   Widget build(BuildContext context) => Container(
         child: SingleChildScrollView(
           child: Padding(
-            padding:  EdgeInsets.fromLTRB(0, MediaQuery.of(context).size.height / 8.7, 0, 0),
+            padding: EdgeInsets.fromLTRB(
+                0, MediaQuery.of(context).size.height / 8.7, 0, 0),
             child: Column(
               children: [
                 const SizedBox(
                   height: 35,
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(
-                      left: 8.0),
+                  padding:  EdgeInsets.only(left: MediaQuery.of(context).size.width / 40),
                   child: Row(
                     crossAxisAlignment:
                         CrossAxisAlignment.start, // Align to the top
@@ -74,9 +73,16 @@ class MyDrawer extends StatelessWidget {
         children: DrawerItems.all
             .map(
               (item) => ListTile(
-                contentPadding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
-                leading: Icon(item.icon, color: Colors.white),
+                contentPadding: EdgeInsets.fromLTRB(
+                    MediaQuery.of(context).size.width / 20,
+                    MediaQuery.of(context).size.height / 40,
+                    0,
+                    MediaQuery.of(context).size.height / 40),
+                leading: Padding(
+                  padding: const EdgeInsets.fromLTRB(
+                      0, 0, 20, 0),
+                  child: Icon(item.icon, color: Colors.white),
+                ),
                 title: (Text(
                   item.title,
                   style: const TextStyle(

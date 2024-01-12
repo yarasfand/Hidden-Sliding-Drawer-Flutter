@@ -17,8 +17,8 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   final DrawerkBloc dashBloc = DrawerkBloc();
-  late double xoffset;
-  late double yoffset;
+  late double xContractExpand = 0;
+  late double yContractExpand = 0;
   late double scaleFactor;
   bool isDragging = false;
   bool isDrawerOpen = false;
@@ -32,19 +32,21 @@ class _MainPageState extends State<MainPage> {
 
   void openDrawer() {
     setState(() {
-      xoffset = 230;
-      yoffset = 170;
+      xContractExpand = 230;
+      yContractExpand = 170;
       scaleFactor = 0.6;
       isDrawerOpen = true;
+      GlobalVars.isTransparent = true;
     });
   }
 
   void closeDrawer() {
     setState(() {
-      xoffset = 0;
-      yoffset = 0;
+      xContractExpand = 0;
+      yContractExpand = 0;
       scaleFactor = 1;
       isDrawerOpen = false;
+      GlobalVars.isTransparent = false;
     });
   }
 
@@ -62,9 +64,9 @@ class _MainPageState extends State<MainPage> {
   Widget buildDrawer() => SafeArea(
         child: AnimatedOpacity(
           opacity: isDrawerOpen ? 1.0 : 0.0,
-          duration: Duration(milliseconds: 300),
+          duration: const Duration(milliseconds: 300),
           child: Container(
-            width: xoffset,
+            width: xContractExpand,
             child: MyDrawer(
               onSelectedItems: (selectedItem) {
                 setState(() {
@@ -126,7 +128,7 @@ class _MainPageState extends State<MainPage> {
         },
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 300),
-          transform: Matrix4.translationValues(xoffset, yoffset, 0)
+          transform: Matrix4.translationValues(xContractExpand, yContractExpand, 0)
             ..scale(scaleFactor),
           child: AbsorbPointer(
             absorbing: isDrawerOpen,
@@ -164,15 +166,3 @@ class _MainPageState extends State<MainPage> {
     );
   }
 }
-
-class DrawerState {
-  bool isDrawerOpen = true;
-  static final DrawerState _instance = DrawerState._internal();
-
-  factory DrawerState() {
-    return _instance;
-  }
-
-  DrawerState._internal();
-}
-

@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../drawerMain/mainPage.dart';
+import '../../globalVariable/globalVars.dart';
 
 class HomePage extends StatelessWidget {
   final VoidCallback openDrawer;
-  final DrawerState drawerState = DrawerState();
 
-  HomePage({
+  const HomePage({
     Key? key,
     required this.openDrawer,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    Color scaffoldBackgroundColor = drawerState.isDrawerOpen == true
+    Color scaffoldBackgroundColor = GlobalVars.isTransparent == true
         ? Colors.transparent
         : Colors.deepPurple;
 
-    Color appBarBackgroundColor = drawerState.isDrawerOpen == true
+    Color appBarBackgroundColor = GlobalVars.isTransparent == true
         ? Colors.transparent
         : Colors.deepPurple;
 
@@ -41,48 +40,44 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
-      body: Container(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Icon(
-                Icons.home,
-                size: 80,
+      body: const Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.home,
+              size: 80,
+              color: Colors.white,
+            ),
+            SizedBox(height: 20),
+            Text(
+              'Welcome to My Home Page',
+              style: TextStyle(
+                fontSize: 24,
                 color: Colors.white,
+                fontWeight: FontWeight.bold,
               ),
-              SizedBox(height: 20),
-              Text(
-                'Welcome to My Home Page',
-                style: TextStyle(
-                  fontSize: 24,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(height: 20),
-              ListTile(
-                leading: Icon(Icons.star, color: Colors.white),
-                title: Text('Feature 1', style: TextStyle(color: Colors.white)),
-              ),
-              ListTile(
-                leading: Icon(Icons.star, color: Colors.white),
-                title: Text('Feature 2', style: TextStyle(color: Colors.white)),
-              ),
-            ],
-          ),
+            ),
+            SizedBox(height: 20),
+            ListTile(
+              leading: Icon(Icons.star, color: Colors.white),
+              title: Text('Feature 1', style: TextStyle(color: Colors.white)),
+            ),
+            ListTile(
+              leading: Icon(Icons.star, color: Colors.white),
+              title: Text('Feature 2', style: TextStyle(color: Colors.white)),
+            ),
+          ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Add your action here
-          print('Floating Action Button Pressed!');
         },
-        child: Icon(Icons.add),
         backgroundColor:
-            Colors.deepPurple, // Set the background color to purple
+            Colors.deepPurple,
+        child: const Icon(Icons.add), // Set the background color to purple
       ),
     );
   }
